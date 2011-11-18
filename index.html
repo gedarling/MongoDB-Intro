@@ -204,10 +204,6 @@
 </div>
 
 <div class="slide">
-   <h1>Schema Design</h1>
-</div>
-
-<div class="slide">
    <h2>Schema Design</h2>
    <ul>
       <li class="slide"> "Schemaless" means that the DB isn't enforcing the schema, but make no mistake: you still have to design your data. </li>
@@ -221,11 +217,11 @@
    <h2>Schema Design: Ground Rules</h2>
    <ul>
       <li class="slide"> Identify "first class objects"; These become the top level collections. </li>
-      <li class="slide"> Any "depedent" things that in SQL we'd shove in another table and join *probably* should be embedded. </li>
-      <li class="slide"> "Dependent" means "displayed with its parent in that order. </li>
+      <li class="slide"> Any "depedent" things that in SQL we'd shove in another table and join probably should be embedded. </li>
+      <li class="slide"> "Dependent" means "displayed with its parent" in that order. </li>
       <li class="slide"> If more flexibility is needed, link with the _id field.</li>
       <li class="slide"> Many-to-Manys are almost always done by linking. </li>
-      <li class="slide"> Be flexible. The schema will evolve. The schema <b>should</b> evolve. </li>
+      <li class="slide"> Be flexible. The schema will evolve. The schema should evolve. </li>
       <li class="slide"> Indexes: Almost exactly like SQL. If you want to search it, you probably want to index it. </li>
       <li class="slide"> Shard Keys: Select these very carefully. </li>
    </ul>
