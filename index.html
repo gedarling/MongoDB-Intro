@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+   <title>MongoDB</title>
+
+   <!-- Core and extension CSS files -->
+   <link rel="stylesheet" href="deck.js/core/deck.core.css">
+   <link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+   <link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+   <link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+   <link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+   <link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
+
+   <link href="SyntaxHighlighter/styles/shCoreRDark.css" rel="stylesheet" type="text/css" />
+   <link href="SyntaxHighlighter/styles/shRDark.css" rel="stylesheet" type="text/css" />
+
+   <!-- Theme CSS files (menu swaps these out) -->
+   <link rel="stylesheet" id="style-theme-link" href="deck.js/themes/style/neon.css">
+
+   <script src="deck.js/modernizr.custom.js"></script>
+</head>
+
+<body class="deck-container">
+
+<div class="slide">
+   <h1>MongoDB / NoSQL</h1>
+</div>
+
+<div class="slide">
+   <h2>Debrief: Mongo Dallas </h2>
+   <ul>
+      <li>
+         <h3>Who</h3>
+         <p>Geoff Darling</p>
+      </li>
+      <li>
+         <h3>When</h3>
+         <p>November 18, 2011</p>
+      </li>
+   </ul>
+</div>
+
+<div class="slide">
+   <h2>What is this NoSQL thing about?</h2>
+   
+   <p>Many different types... if it means anything at all it means "not SQL."</p>
+   <ul>
+      <li class="slide">key / value </li>
+      <li class="slide">document (Mongo!) </li>
+      <li class="slide">object </li>
+      <li class="slide">tuple </li>
+      <li class="slide">table style </li>
+   </ul>
+</div>
+
+<div class="slide">
+   <h2>Don't we love SQL?</h2>
+
+   <ul>
+      <li class="slide"> Yes, but...</li>
+      <li class="slide"> More than once we have found ourselves with data in JSON blobs in the DB. </li>
+      <li class="slide"> Some of the design considerations for Mongo might help us structure those better. </li>
+      <li class="slide"> Maybe one day we can live in a world where everything runs on V8 and we ride unicorns to and from work. </li>
+   </ul>
+</div>
+
+<div class="slide">
+   <h2>SQL vs. Mongo Terms</h2>
+   
+   <table>
+      <thead>
+         <tr>
+            <td>
+               SQL
+            </td>
+            <td>
+               MongoDB
+            </td>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td>
+               database
+            </td>
+            <td>
+               database
+            </td>
+         </tr>
+         <tr>
+            <td>
+               table
+            </td>
+            <td>
+               collection
+            </td>
+         </tr>
+         <tr>
+            <td>
+               index
+            </td>
+            <td>
+               index
+            </td>
+         </tr>         
+         <tr>
+            <td>
+               row
+            </td>
+            <td>
+               BSON document
+            </td>
+         </tr>
+         <tr>
+            <td>
+               column
+            </td>
+            <td>
+               BSON field
+            </td>
+         </tr>
+         <tr>
+            <td>
+               join
+            </td>
+            <td>
+               embedding and linking
+            </td>
+         </tr>
+         <tr>
+            <td>
+               primary key
+            </td>
+            <td>
+               _id field
+            </td>
+         </tr> 
+      </tbody>   
+   </table>
+
+</div>
+
+<div class="slide">
+   <h2>MongoDB?</h2>
+
+   <ul>
+      <li class="slide"> NoSQL DB</li>
+      <li class="slide"> Document "oriented" database </li>
+      <li class="slide"> Stores things in BSON (Binary JSON) </li>
+      <li class="slide"> Command line DB tool in javascript </li>
+      <li class="slide"> Ad hoc queries via a JSON-style query language </li>
+   </ul>
+</div>
+
+
+<div class="slide">
+   <h2>MongoDB: things from SQL</h2>
+
+   <ul>
+      <li class="slide"> Indexes on values (including embedded docs)</li>
+      <li class="slide"> Limited atomic operations </li>
+      <li class="slide"> Robust and varied datatypes </li>
+      <li class="slide"> Query tools/analyzers and stats (Apparently they stole a bunch of Oracle people) </li>
+   </ul>
+</div>
+
+<div class="slide">
+   <h2>MongoDB: What do we lose?</h2>
+
+   <ul>
+      <li class="slide"> In a word: "joins"</li>
+      <li class="slide"> In another word: "transactions" </li>
+   </ul>
+</div>
+
+<div class="slide">
+   <h2>A note on RAM</h2>
+
+   <ul>
+      <li class="slide"> Mongo DB memory maps everything </li>
+      <li class="slide"> If your milkshake isn't 64 bits... forget it. </li>
+      <li class="slide"> Total memory required = Working Data Set* + Indexes </li>
+      <li class="slide"> *Worst case for the working set is the entire DB. </li>
+   </ul>
+</div>
+
+<div class="slide">
+   <h2>MongoDB: Advantages?</h2>
+   <ul>
+      <li class="slide"> "Schemaless" DB might solve problems better than SQL in some cases. </li>
+      <li class="slide"> Scaling. MongoDB is designed out of the box to scale like crazy. </li>
+      <li class="slide"> Built in journaling with failover. </li>
+      <li class="slide"> Built in ability to shard and partition the DB across lots of nodes. </li>
+      <li class="slide"> Scaling with Shards can cut down on the crazy ram requirements: A shard's working set can be smaller than the whole. </li>
+      <li class="slide"> Lots of small boxes usually beat one big one on cost / performance. </li>
+      <li class="slide"> A properly designed app can be very fast. (1000s of requests per second) </li>
+   </ul>
+</div>
+
+<div class="slide">
+   <h1>Schema Design</h1>
+</div>
+
+<div class="slide">
+   <h2>Schema Design</h2>
+   <ul>
+      <li class="slide"> "Schemaless" means that the DB isn't enforcing the schema, but make no mistake: you still have to design your data. </li>
+      <li class="slide"> Effectively this means that more is being pushed into our application layer from the DB layer. :( </li>
+      <li class="slide"> No hard and fast rules like SQL. (Third-Normal Form... DONE!) </li>
+      <li class="slide"> A lot of the trade-offs are going to revolve around our <b>use cases</b> (How do we use the data?)</li>
+   </ul>
+</div>
+
+<div class="slide">
+   <h2>Schema Design: Ground Rules</h2>
+   <ul>
+      <li class="slide"> Identify "first class objects"; These become the top level collections. </li>
+      <li class="slide"> Any "depedent" things that in SQL we'd shove in another table and join *probably* should be embedded. </li>
+      <li class="slide"> "Dependent" means "displayed with its parent in that order. </li>
+      <li class="slide"> If more flexibility is needed, link with the _id field.</li>
+      <li class="slide"> Many-to-Manys are almost always done by linking. </li>
+      <li class="slide"> Be flexible. The schema will evolve. The schema <b>should</b> evolve. </li>
+      <li class="slide"> Indexes: Almost exactly like SQL. If you want to search it, you probably want to index it. </li>
+      <li class="slide"> Shard Keys: Select these very carefully. </li>
+   </ul>
+</div>
+
+
+<div class="slide">
+   <h2>An Example of the Tradeoffs</h2>
+   <div class="slide">
+      <pre class="brush:javascript">
+      {
+         server: 'unicorn 1',
+         message: 'everything is on fire!?!?!',
+         level: 'critical'
+      }
+      
+      {
+         server: 'unicorn 24',
+         message: 'my php is getting haxored!',
+         level: 'happens every day'
+      }
+      
+      ...
+      </pre>
+   </div>
+</div>
+
+<div class="slide">
+   <h2>Another way</h2>
+   <div class="slide">
+      <pre class="brush:javascript">
+      {
+         server: 'unicorn 12',
+         events: [{
+            message: 'apache restarted',
+            level: 'warn'
+         },{
+            message: 'job complete',
+            level: 'info'
+         },{
+            ...  
+         }]
+      }
+
+      ...
+      </pre>
+   </div>
+</div>
+
+<div class="slide">
+   <h3>Questions?</h3>
+</div>
+
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<p class="deck-status">
+   <span class="deck-status-current"></span>
+   /
+   <span class="deck-status-total"></span>
+</p>
+
+<form action="." method="get" class="goto-form">
+   <label for="goto-slide">Go to slide:</label>
+   <input type="number" name="slidenum" id="goto-slide">
+   <input type="submit" value="Go">
+</form>
+
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js">\x3C/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+
+<script type="text/javascript" src="SyntaxHighlighter/scripts/XRegExp.js"></script>
+<script type="text/javascript" src="SyntaxHighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="SyntaxHighlighter/scripts/shBrushJScript.js"></script>
+
+<!-- Specific to this page -->
+<script src="index.js"></script>
+
+</body>
+</html>
